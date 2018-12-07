@@ -4,33 +4,30 @@ body{
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
-
-
 }
 
 header{
     background-color: #878af0;
-    height: 50px;
-    text-align: center;
-    padding-top: 5%;
 }
 
 main{
-
     flex: 1;
-
 }
 
+#newCat{
+    visibility: hidden;
+    border: #9900ff solid 1px;
+    border-radius: 5px;
+    background-color: #9900ff;
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#linkNewCat:hover #newCat{
+    visibility: visible;
+}
 footer{
-    border-top: 2px solid black;
-
-}
-
-#nova-cat{
-	background:#b5b5b5; 
-	border:1px dashed #ff9900;
-	
-    
-	
-
+    border-top: 1px solid black;
 }

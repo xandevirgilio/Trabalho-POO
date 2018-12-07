@@ -1,7 +1,6 @@
 <?php
 
 require_once "controller/CategoriaController.php";
-// require_once "model/CategoriaDAO.php";
 
 //ROTAS -
 
@@ -36,35 +35,35 @@ switch ($acao){
         $cat = new CategoriaController();
         $cat->inserir($categoriaNova);
         exit;
+    case 'atualizar':
+        //mostrar o form preenchido
+        //pega o ID enviado
+        $id = $_GET['id'];
+        //instancia o controlador
+        $cat = new CategoriaController();
+        //chama o método
+        $cat->atualizar($id);
+        exit;
+    case 'gravaAtualizar':
+        //pegar dados do POST
+        $categoriaNova = new Categoria();
+        $categoriaNova->setId($_POST['id']);
+        $categoriaNova->setNome($_POST['nome']);
+        $categoriaNova->setDescricao($_POST['descricao']);
+        $cat = new CategoriaController();
+        $cat->gravaAtualizar($categoriaNova);
+        exit;
+    case 'excluir':
+        $id = $_GET['id'];
+        $cat = new CategoriaController();
+        //chama o método
+        $cat->excluir($id);
 
-    case 'buscaUpdate':
-            $id=$_GET['id'];
-            $cat = new CategoriaController();
-            $cat->buscaUpdate($id);
-            exit;
-
-    case 'gravaUpdate':
-            $categoriaUpdate = new Categoria();
-            $categoriaUpdate->setId($_POST['id']);                    
-            $categoriaUpdate->setNome($_POST['nome']);
-            $categoriaUpdate->setDescricao($_POST['descricao']);
-            $cat = new CategoriaController();
-            var_dump($categoriaUpdate);
-            $cat->gravaUpdate($categoriaUpdate);
-            exit;
-
-    case 'deletar':
-            $id=$_GET['id'];
-            $cat = new CategoriaController();
-            $cat->deletar($id);
-            exit;
-
+        exit;
     default:
-        echo "Operação inválida";                    
-
+        echo "Ação inválida";
 
 }
-
 
 
 
